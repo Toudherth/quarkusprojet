@@ -4,8 +4,8 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import org.acme.entity.Candidat;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.ws.rs.ApplicationPath;
 
-public interface CandidatRepository extends PanacheRepository<Candidat> {
+@ApplicationScoped
+public class CandidatRepository implements PanacheRepository<Candidat> {
 
 }
