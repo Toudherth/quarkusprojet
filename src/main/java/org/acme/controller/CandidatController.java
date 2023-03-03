@@ -18,7 +18,7 @@ import java.util.List;
 public class CandidatController {
 
     // pour la gestion de la database
-    AgroalDataSource agroalDataSource;
+    //AgroalDataSource agroalDataSource;
 
     @Inject
     private CandidatRepository candidateRepository;

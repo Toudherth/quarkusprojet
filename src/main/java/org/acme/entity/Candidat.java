@@ -55,6 +55,18 @@ public class Candidat {
         this.offres = offres;
     }
 
+    public Candidat(Long id_candidat, String nom_candidat, String prenom_candidat, String nationalite, String datenaissance, String numerotel, String cv,
+                    String lettremotivation) {
+        this.id_candidat = id_candidat;
+        this.nom_candidat = nom_candidat;
+        this.prenom_candidat = prenom_candidat;
+        this.nationalite = nationalite;
+        this.datenaissance = datenaissance;
+        this.numerotel = numerotel;
+        this.cv = cv;
+        this.lettremotivation = lettremotivation;
+    }
+
     public Long getId_candidat() {
         return id_candidat;
     }

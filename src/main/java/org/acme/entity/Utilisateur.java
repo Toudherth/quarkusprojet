@@ -18,9 +18,7 @@ public class Utilisateur {
     @JoinColumn()// @JoinColumn(name = "candidat_id")
     private Candidat candidat;
 
-    public Utilisateur() {
-
-    }
+    public Utilisateur() { }
     public Utilisateur(Long id_utilisateur) {
         this.id_utilisateur = id_utilisateur;
     }
@@ -29,6 +27,12 @@ public class Utilisateur {
         this.login = login;
         this.password = password;
         this.candidat = candidat;
+    }
+
+    public Utilisateur(Long id_utilisateur, String login, String password) {
+        this.id_utilisateur = id_utilisateur;
+        this.login = login;
+        this.password = password;
     }
 
     public Long getId_utilisateur() {

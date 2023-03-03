@@ -40,6 +40,16 @@ public class Offre {
         this.candidats = candidats;
     }
 
+    public Offre(Long id_offre, String nom_offre, String metier_offre, String description,
+                 String periode, String renumeration) {
+        this.id_offre = id_offre;
+        this.nom_offre = nom_offre;
+        this.metier_offre = metier_offre;
+        this.description = description;
+        this.periode = periode;
+        this.renumeration = renumeration;
+    }
+
     public Long getId_offre() {
         return id_offre;
     }
