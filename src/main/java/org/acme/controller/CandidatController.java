@@ -24,7 +24,7 @@ public class CandidatController {
     private CandidatRepository candidateRepository;
     @GET
     public List<Candidat> getAll() {
-        return (List<Candidat>) candidateRepository.findAll();
+        return candidateRepository.listAll();
     }
 
     @GET
