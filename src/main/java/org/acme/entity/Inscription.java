@@ -3,6 +3,7 @@ package org.acme.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "inscription")
 public class Inscription {
     @Id
     @Column(name = "inscription_id")
@@ -50,7 +51,7 @@ public class Inscription {
         this.etat = etat;
     }
 
-    @Override
+ /*   @Override
     public String toString() {
         return "Inscription{" +
                 "inscriptionId=" + inscriptionId +
@@ -58,5 +59,5 @@ public class Inscription {
                 ", mdpGestionnaire='" + mdpGestionnaire + '\'' +
                 ", etat=" + etat +
                 '}';
-    }
+    } */
 }

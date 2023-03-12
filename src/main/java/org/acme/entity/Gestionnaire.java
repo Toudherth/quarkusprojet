@@ -3,6 +3,7 @@ package org.acme.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "gestionnaires")
 public class Gestionnaire {
     @Id
     @Column(name = "gestionnaire_id")

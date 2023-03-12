@@ -50,7 +50,7 @@ public class OffreControlleur {
         entity.setDescription(offre.getDescription());
         entity.setPeriode(offre.getPeriode());
         entity.setRenumeration(offre.getRenumeration());
-        entity.setCandidats(offre.getCandidats());
+        // entity.setCandidats(offre.getCandidats());
         offreRepository.persist(entity);
         return Response.ok(entity).build();
     }

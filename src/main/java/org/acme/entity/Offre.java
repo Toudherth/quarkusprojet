@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "offres")
 public class Offre {
 
     @Id
@@ -20,8 +21,8 @@ public class Offre {
     @Column(nullable = false)
     private String renumeration;
 
-    @ManyToMany(mappedBy = "offres")
-    private List<Candidat>  candidats;
+  //  @ManyToMany(mappedBy = "offres")
+    //private List<Candidat>  candidats;
 
     public Offre() {
     }
@@ -29,7 +30,7 @@ public class Offre {
         this.id_offre = id_offre;
     }
 
-    public Offre(Long id_offre, String nom_offre, String metier_offre, String description,
+   /* public Offre(Long id_offre, String nom_offre, String metier_offre, String description,
                  String periode, String renumeration, List<Candidat> candidats) {
         this.id_offre = id_offre;
         this.nom_offre = nom_offre;
@@ -38,7 +39,7 @@ public class Offre {
         this.periode = periode;
         this.renumeration = renumeration;
         this.candidats = candidats;
-    }
+    }*/
 
     public Offre(Long id_offre, String nom_offre, String metier_offre, String description,
                  String periode, String renumeration) {
@@ -98,15 +99,15 @@ public class Offre {
         this.renumeration = renumeration;
     }
 
-    public List<Candidat> getCandidats() {
+  /*  public List<Candidat> getCandidats() {
         return candidats;
     }
 
     public void setCandidats(List<Candidat> candidats) {
         this.candidats = candidats;
-    }
+    } */
 
-    @Override
+  /*  @Override
     public String toString() {
         return "Offre{" +
                 "id_offre=" + id_offre +
@@ -115,7 +116,7 @@ public class Offre {
                 ", description='" + description + '\'' +
                 ", periode='" + periode + '\'' +
                 ", renumeration='" + renumeration + '\'' +
-                ", candidats=" + candidats +
+                //   ", candidats=" + candidats +
                 '}';
-    }
+    } */
 }

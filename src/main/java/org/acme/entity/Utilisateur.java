@@ -4,19 +4,21 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "utilisateurs")
 public class Utilisateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_utilisateur;
+     Long id_utilisateur;
     @Column(nullable = false)
-    private String login;
-    @Column(nullable = false)
-    private String password;
+     String login;
+   // @Column(nullable = false)
+     String password;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn()// @JoinColumn(name = "candidat_id")
-    private Candidat candidat;
+    //@JoinColumn()//
+    @JoinColumn(name = "candidat_id")
+     Candidat candidat;
 
     public Utilisateur() { }
     public Utilisateur(Long id_utilisateur) {
@@ -24,6 +26,11 @@ public class Utilisateur {
     }
     public Utilisateur(Long id_utilisateur, String login, String password, Candidat candidat) {
         this.id_utilisateur = id_utilisateur;
+        this.login = login;
+        this.password = password;
+        this.candidat = candidat;
+    }
+    public Utilisateur(String login, String password, Candidat candidat) {
         this.login = login;
         this.password = password;
         this.candidat = candidat;
@@ -73,7 +80,7 @@ public class Utilisateur {
                 "id_utilisateur=" + id_utilisateur +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", candidat=" + candidat +
+                ", candidat=" + candidat.getNom_candidat() +
                 '}';
     }
 }
