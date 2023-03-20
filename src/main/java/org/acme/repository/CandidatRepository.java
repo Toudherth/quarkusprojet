@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 
 @ApplicationScoped
 public class CandidatRepository implements PanacheRepository<Candidat> {
-
+/*
     @PersistenceContext
     EntityManager entityManager;
 
@@ -17,5 +17,5 @@ public class CandidatRepository implements PanacheRepository<Candidat> {
         return entityManager.createQuery("SELECT c  from Candidat c where c.login =: login AND c.password =: password", Candidat.class).setParameter("login", login)
                 .setParameter("password", password)
                 .getSingleResult();
-    }
+    }*/
 }

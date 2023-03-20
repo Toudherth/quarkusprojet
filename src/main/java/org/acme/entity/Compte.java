@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class Inscription {
+public class Compte {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,21 +15,35 @@ public class Inscription {
         public String password;
         //@Roles
         public String role;
+        @OneToOne
+        private Candidat candidat;
 
-        public Inscription() {}
+        public Compte() {}
 
-        public Inscription(Long id_User) {
+        public Compte(Long id_User) {
             this.id_User = id_User;
         }
 
-        public Inscription(Long id_User, String email, String password, String role) {
+    public Compte(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+        public Compte(Long id_User, String email, String password, String role) {
             this.id_User = id_User;
             this.email = email;
             this.password = password;
             this.role = role;
         }
 
-        public Long getId_User() {
+    public Compte(Long id_User, String email, String password, Candidat candidat) {
+        this.id_User = id_User;
+        this.email = email;
+        this.password = password;
+        this.candidat = candidat;
+    }
+
+    public Long getId_User() {
             return id_User;
         }
 
@@ -61,7 +75,15 @@ public class Inscription {
             this.role = role;
         }
 
-        @Override
+    public Candidat getCandidat() {
+        return candidat;
+    }
+
+    public void setCandidat(Candidat candidat) {
+        this.candidat = candidat;
+    }
+
+    @Override
         public String toString() {
             return "User{" +
                     "id_User=" + id_User +

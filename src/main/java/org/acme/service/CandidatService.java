@@ -1,9 +1,7 @@
 package org.acme.service;
 
 import org.acme.entity.Candidat;
-import org.acme.entity.Utilisateur;
 import org.acme.repository.CandidatRepository;
-import org.acme.repository.UtilisateurRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -17,13 +15,6 @@ public class CandidatService {
 
     @Inject
     CandidatRepository candidatRepository;
-    @Inject
-    UtilisateurRepository utilisateurRepository;
-
-    public CandidatService(CandidatRepository candidatRepository, UtilisateurRepository utilisateurRepository) {
-        this.candidatRepository = candidatRepository;
-        this.utilisateurRepository = utilisateurRepository;
-    }
 
     public List<Candidat> getAll() {
         return (List<Candidat>) candidatRepository.findAll().list();
@@ -32,34 +23,14 @@ public class CandidatService {
     public Candidat getById(Long id) {
         return candidatRepository.findByIdOptional(id).orElseThrow(() -> new NotFoundException("Candidat with Id" + id + "not found"));
     }
-
+    /*
     public Candidat getCandidatByLogin(String  login, String password) {
         return candidatRepository.findByLoginAndPassword(login, password);
-        }
+        }*/
+
     public void addCandidat(Candidat candidat) {
         candidatRepository.persist(candidat);
     }
-
-   /* public Candidat inscrire(String nom_candidat, String prenom_candidat, String nationalite,
-                             String datenaissance, String numerotel, String cv, String lettremotivation,
-                             String login, String password) {
-        // Création de l'utilisateur avec les informations d'authentification
-        Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setLogin(login);
-        utilisateur.setPassword(password);
-        utilisateurRepository.persist(utilisateur);
-
-        // Création du candidat avec les informations personnelles et l'utilisateur créé précédemment
-        Candidat candidat = new Candidat(nom_candidat, prenom_candidat, nationalite, datenaissance, numerotel, cv, lettremotivation, utilisateur);
-        candidatRepository.persist(candidat);
-
-        // Association du candidat à l'utilisateur
-        utilisateur.setCandidat(candidat);
-        utilisateurRepository.persist(utilisateur);
-
-        return candidat;
-    }*/
-
 
 
     public Response UpdateCandidat(Long id, Candidat candidat) {
@@ -88,13 +59,13 @@ public class CandidatService {
         if (candidat.getLettremotivation() != null) {
             entity.setLettremotivation(candidat.getLettremotivation());
         }
-        if (candidat.getLogin() != null) {
+   /*     if (candidat.getLogin() != null) {
             entity.setLogin(candidat.getLogin());
         }
 
         if (candidat.getPassword() != null) {
             entity.setPassword(candidat.getPassword());
-        }
+        }*/
 
         candidatRepository.persist(entity);
         return Response.ok(entity).build();

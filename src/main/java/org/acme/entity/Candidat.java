@@ -1,6 +1,9 @@
 package org.acme.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -10,25 +13,35 @@ public class Candidat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_candidat;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String nom_candidat;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String prenom_candidat;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String nationalite;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String datenaissance;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String numerotel;
-    @Column(nullable = false)
+   // @Column(nullable = false)
     private String cv;
-    @Column(nullable = false)
+   // @Column(nullable = false)
     private String lettremotivation;
 
+    @OneToOne
+    private Compte compte;
+/*
     @Column(nullable = false)
     String login;
     @Column(nullable = false)
     String password;
+*/
+    /*
+    @ManyToOne
+    @JoinColumn(name = "offre_id")
+    @JsonIgnoreProperties("candidats")
+    private Offre offres;
+*/
 
  /*   @OneToOne(mappedBy = "candidat", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Utilisateur utilisateur; */
@@ -43,7 +56,7 @@ public class Candidat {
     }
 
     public Candidat(String nom_candidat, String prenom_candidat, String nationalite, String datenaissance, String numerotel, String cv,
-                    String lettremotivation) {
+                    String lettremotivation, Compte compte) {
         this.nom_candidat = nom_candidat;
         this.prenom_candidat = prenom_candidat;
         this.nationalite = nationalite;
@@ -51,9 +64,12 @@ public class Candidat {
         this.numerotel = numerotel;
         this.cv = cv;
         this.lettremotivation = lettremotivation;
+        this.compte = compte;
     }
-    public Candidat(Long id_candidat, String nom_candidat, String prenom_candidat, String nationalite, String datenaissance, String numerotel, String cv,
-                    String lettremotivation) {
+
+    public Candidat(Long id_candidat, String nom_candidat, String prenom_candidat, String nationalite,
+                    String datenaissance, String numerotel, String cv,
+                    String lettremotivation/*, String login, String password, Offre offres*/) {
         this.id_candidat = id_candidat;
         this.nom_candidat = nom_candidat;
         this.prenom_candidat = prenom_candidat;
@@ -62,11 +78,13 @@ public class Candidat {
         this.numerotel = numerotel;
         this.cv = cv;
         this.lettremotivation = lettremotivation;
+     /*   this.login = login;
+        this.password = password;*/
+        //this.offres = offres;
     }
 
-    public Candidat(Long id_candidat, String nom_candidat, String prenom_candidat, String nationalite, String datenaissance, String numerotel, String cv,
-                    String lettremotivation, String login, String password) {
-        this.id_candidat = id_candidat;
+    public Candidat(String nom_candidat, String prenom_candidat, String nationalite, String datenaissance, String numerotel, String cv,
+                    String lettremotivation /*, String login, String password*/) {
         this.nom_candidat = nom_candidat;
         this.prenom_candidat = prenom_candidat;
         this.nationalite = nationalite;
@@ -74,15 +92,15 @@ public class Candidat {
         this.numerotel = numerotel;
         this.cv = cv;
         this.lettremotivation = lettremotivation;
-        this.login = login;
-        this.password = password;
+   /*     this.login = login;
+        this.password = password;*/
     }
-
+/*
     public Candidat(String login, String password) {
         this.login = login;
         this.password = password;
     }
-
+*/
     public Long getId_candidat() {
         return id_candidat;
     }
@@ -146,7 +164,7 @@ public class Candidat {
     public void setLettremotivation(String lettremotivation) {
         this.lettremotivation = lettremotivation;
     }
-
+/*
     public String getLogin() {
         return login;
     }
@@ -161,7 +179,15 @@ public class Candidat {
 
     public void setPassword(String password) {
         this.password = password;
+    }*/
+/*
+    public Offre getOffres() {
+        return offres;
     }
+
+    public void setOffre(Offre offres) {
+        this.offres = offres;
+    }*/
 
     @Override
     public String toString() {
@@ -174,30 +200,13 @@ public class Candidat {
                 ", numerotel='" + numerotel + '\'' +
                 ", cv='" + cv + '\'' +
                 ", lettremotivation='" + lettremotivation + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
+           /*     ", login='" + login + '\'' +
+                ", password='" + password + '\'' +*/
+
                 '}';
     }
 
-    // public Utilisateur getUtilisateur() {return utilisateur;}
 
-   // public void setUtilisateur(Utilisateur utilisateur) {this.utilisateur = utilisateur;}
-
-  /*  @Override
-    public String toString() {
-        return "Candidat{" +
-                "id_candidat=" + id_candidat +
-                ", nom_candidat='" + nom_candidat + '\'' +
-                ", prenom_candidat='" + prenom_candidat + '\'' +
-                ", nationalite='" + nationalite + '\'' +
-                ", datenaissance='" + datenaissance + '\'' +
-                ", numerotel='" + numerotel + '\'' +
-                ", cv='" + cv + '\'' +
-                ", lettremotivation='" + lettremotivation + '\'' +
-                ", utilisateur=" + utilisateur.getLogin() +
-
-              '}';
-    } */
 
 
 }

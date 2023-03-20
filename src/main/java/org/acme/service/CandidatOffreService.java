@@ -1,2 +1,6 @@
-package org.acme.service;public interface CandidatOffreService {
+package org.acme.service;
+
+
+
+public interface CandidatOffreService {
 }
