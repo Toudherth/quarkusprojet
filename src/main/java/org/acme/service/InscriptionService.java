@@ -1,26 +1,22 @@
 package org.acme.service;
 
-import org.acme.entity.Utilisateur;
-import org.acme.repository.UtilisateurRepository;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.NotFoundException;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@ApplicationScoped
-public class UtilisateurService {
-
+//@ApplicationScoped
+public class AuthentificationService {
+/*
     @Inject
     UtilisateurRepository utilisateurRepository;
 
-    public UtilisateurService (UtilisateurRepository utilisateurRepository) {
+    public AuthentificationService(UtilisateurRepository utilisateurRepository) {
         this.utilisateurRepository= utilisateurRepository;
     }
 
-    // Recuperation de la liste des utilisateurs
+
 
     public List<Utilisateur> getAll(){
         return (List<Utilisateur>) utilisateurRepository.findAll().list();
@@ -58,7 +54,7 @@ public class UtilisateurService {
     
 
 
-
+*/
 
 
 }
