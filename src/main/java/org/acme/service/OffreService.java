@@ -7,7 +7,7 @@ import javax.ws.rs.PathParam;
 import java.util.List;
 
 @Path("/offre")
-@RegisterRestClient
+@RegisterRestClient  // la communication avec le microservice offre 
 public interface OffreService {
     @GET
     @Path("/{id}")

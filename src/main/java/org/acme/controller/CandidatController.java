@@ -1,47 +1,59 @@
 package org.acme.controller;
 
-import com.oracle.svm.core.annotate.Delete;
-import io.agroal.api.AgroalDataSource;
-import io.smallrye.common.constraint.NotNull;
-import org.acme.entity.Candidat;
-import org.acme.entity.User;
-import org.acme.repository.CandidatRepository;
-import org.acme.service.CandidatService;
-import org.acme.service.UserService;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
 
+import org.acme.entity.Candidat;
+import org.acme.securite.AuthentificationJwtService;
+import org.acme.service.CandidatService;
+import org.eclipse.microprofile.jwt.JsonWebToken;
+
+import io.quarkus.security.Authenticated;
+import io.quarkus.security.identity.SecurityIdentity;
+import io.quarkus.security.identity.request.AuthenticationRequest;
+
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
+import javax.resource.spi.work.SecurityContext;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
-import java.beans.Transient;
-import java.net.URI;
 import java.util.List;
 
 @Path("/candidat")
 @Produces(MediaType.TEXT_PLAIN)
 public class CandidatController {
 
-    // important
+
     @Inject
     private CandidatService candidatService;
+
+    @Inject
+    JsonWebToken token;
+
+    @Inject
+    AuthentificationJwtService authentificationJwtService;
 
 
     /* ============================================================================  */
     @GET
+    @RolesAllowed("admin")
+    //@PermitAll
     public List<Candidat> getAll() {
         return (List<Candidat>) candidatService.getAll();
     }
 
     @GET
+    @Authenticated
+    @RolesAllowed({"admin", "employeur", "agence"})
     @Path("/cadidatid/{idclient}")
     public Candidat getCandidat(@PathParam("idclient") Long idclient ){
         return candidatService.getById(idclient);
     }
+
+    
 /*
     @GET
     @Path("/{login}")
@@ -55,6 +67,7 @@ public class CandidatController {
     }
 */
     @POST
+    @RolesAllowed("candidat")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
@@ -64,6 +77,8 @@ public class CandidatController {
     }
 
     @PUT
+    @Authenticated
+    @RolesAllowed("candidat")
     @Path("/{id}")
     @Transactional
     public Response UpdateCandidat(@PathParam("id") Long id, Candidat candidat){
@@ -72,6 +87,8 @@ public class CandidatController {
     }
 
     @DELETE
+    @Authenticated
+    @RolesAllowed({"admin", "candidat"})
     @Path("/{id}")
     @Transactional
     public Response deleteCandidat(@PathParam("id") Long id){
