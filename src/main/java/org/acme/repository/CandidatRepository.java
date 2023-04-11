@@ -9,6 +9,10 @@ import javax.persistence.PersistenceContext;
 
 @ApplicationScoped
 public class CandidatRepository implements PanacheRepository<Candidat> {
+
+    public Candidat findByNomCandidat(String nom_candidat) {
+        return find("nom_candidat", nom_candidat).firstResult();
+    }
 /*
     @PersistenceContext
     EntityManager entityManager;

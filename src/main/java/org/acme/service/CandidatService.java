@@ -33,6 +33,12 @@ public class CandidatService {
     }
 
 
+    // candidat 
+    public Candidat findByNomCandidat(String nom_candidat) {
+        return candidatRepository.findByNomCandidat(nom_candidat);
+    }
+
+
     public Response UpdateCandidat(Long id, Candidat candidat) {
         Candidat entity = candidatRepository.findById(id);
         if (entity == null) {

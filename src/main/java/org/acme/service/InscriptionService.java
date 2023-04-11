@@ -17,13 +17,10 @@ public class InscriptionService {
     @Inject
     CompteRepository compteRepository;
 
-    @Inject    CandidatRepository candidatRepository;
+    @Inject    
+    CandidatRepository candidatRepository;
 
     // ajouter compte et candidat
-
-
-
-
 
 
 

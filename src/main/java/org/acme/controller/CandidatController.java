@@ -46,7 +46,7 @@ public class CandidatController {
     }
 
     @GET
-    @Authenticated
+    //@Authenticated
     @RolesAllowed({"admin", "employeur", "agence"})
     @Path("/cadidatid/{idclient}")
     public Candidat getCandidat(@PathParam("idclient") Long idclient ){
@@ -77,7 +77,7 @@ public class CandidatController {
     }
 
     @PUT
-    @Authenticated
+    //@Authenticated
     @RolesAllowed("candidat")
     @Path("/{id}")
     @Transactional
@@ -87,7 +87,7 @@ public class CandidatController {
     }
 
     @DELETE
-    @Authenticated
+    //@Authenticated
     @RolesAllowed({"admin", "candidat"})
     @Path("/{id}")
     @Transactional

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "candidats")
@@ -37,11 +39,14 @@ public class Candidat {
     String password;
 */
     /*
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "offre_id")
     @JsonIgnoreProperties("candidats")
-    private Offre offres;
-*/
+    private Offre offres; */
+
+  /*/  @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Offre> offres= new HashSet<>();
+
 
  /*   @OneToOne(mappedBy = "candidat", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Utilisateur utilisateur; */
@@ -69,7 +74,7 @@ public class Candidat {
 
     public Candidat(Long id_candidat, String nom_candidat, String prenom_candidat, String nationalite,
                     String datenaissance, String numerotel, String cv,
-                    String lettremotivation/*, String login, String password, Offre offres*/) {
+                    String lettremotivation/*, String login, String password, Set<Offre> offres*/) {
         this.id_candidat = id_candidat;
         this.nom_candidat = nom_candidat;
         this.prenom_candidat = prenom_candidat;
@@ -80,7 +85,7 @@ public class Candidat {
         this.lettremotivation = lettremotivation;
      /*   this.login = login;
         this.password = password;*/
-        //this.offres = offres;
+       // this.offres = offres;
     }
 
     public Candidat(String nom_candidat, String prenom_candidat, String nationalite, String datenaissance, String numerotel, String cv,
@@ -181,14 +186,14 @@ public class Candidat {
         this.password = password;
     }*/
 /*
-    public Offre getOffres() {
+    public Set<Offre> getOffres() {
         return offres;
     }
 
-    public void setOffre(Offre offres) {
+    public void setOffre(Set<Offre> offres) {
         this.offres = offres;
-    }*/
-
+    }
+*/
     @Override
     public String toString() {
         return "Candidat{" +
@@ -202,7 +207,7 @@ public class Candidat {
                 ", lettremotivation='" + lettremotivation + '\'' +
            /*     ", login='" + login + '\'' +
                 ", password='" + password + '\'' +*/
-
+          //      ", offres='" + offres + '\'' +
                 '}';
     }
 

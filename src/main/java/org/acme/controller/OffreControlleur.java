@@ -83,18 +83,25 @@ public class OffreControlleur {
         Offre offre = offreService.getOffre(id_offre);
         Candidat candidat = candidatService.getById(id_candidat);
         System.out.println("-----------------"+offre.nom_offre + "   ici le candidat ------"+candidat.getNom_candidat());
-        if (offre == null) {
-            throw new NotFoundException();
-        }
-        // candidat.setOffre(offre);
+        
+       // candidat.setOffre(offre);
         //System.out.println("----------------les candidats offre -"+candidat.getOffres());
         candidat= candidatService.getById(candidat.getId_candidat());
         candidatService.UpdateCandidat(id_candidat, candidat);
         return Response.status(Response.Status.CREATED).entity(candidat).build();
     }
-
-
-
-
+/*
+    @POST
+    @Path("/{id_offre}/{idcandidat}/{nom_candidat}")
+    @Transactional
+    public Response postulerToOffre(@PathParam("id_offre") Long id_offre, @PathParam("nom_candidat") String nomcandidat,@PathParam("idcandidat") Long id_candidat) {
+        Candidat candidat = candidatService.findByNomCandidat(nomcandidat);
+        Offre offre = offreService.getOffre(id_offre);
+        candidat = candidatService.getById(id_candidat);
+    
+        candidat.getOffres().add(offre);
+        return Response.status(Response.Status.CREATED).entity(candidat).build();
+    } 
+*/
 
 }

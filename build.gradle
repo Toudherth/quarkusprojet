@@ -24,6 +24,7 @@ dependencies {
     implementation 'org.mindrot:jbcrypt:0.4'
     implementation 'io.quarkus:quarkus-smallrye-jwt'
     implementation 'io.quarkus:quarkus-smallrye-jwt-build:2.16.4.Final'
+    implementation 'io.quarkus:quarkus-oidc'
     implementation 'io.quarkus:quarkus-rest-client'
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
