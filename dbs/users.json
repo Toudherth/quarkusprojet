@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "64460f43990e661d251bad85"
+  },
+  "username": "toudh",
+  "password": "$2y$10$efKjD9WDcyAF/4WOpKw8/eNlmywKajwviFJW98ku7LtMvNPekW63a",
+  "roles": [
+    {
+      "$ref": "roles",
+      "$id": {
+        "$oid": "64460ae0990e661d251bad77"
+      }
+    }
+  ],
+  "_class": "com.projet.hello.entity.AppUser"
+},{
+  "_id": {
+    "$oid": "644613f6990e661d251bad88"
+  },
+  "username": "user4",
+  "password": "$2y$10$1h3zvafpGxDzk9LZxs895uKb1u58Lbhcj09apsMocKjZpOye/toQC",
+  "roles": [
+    {
+      "$ref": "roles",
+      "$id": {
+        "$oid": "64460b21990e661d251bad79"
+      }
+    }
+  ],
+  "_class": "com.projet.hello.entity.AppUser"
+},{
+  "_id": {
+    "$oid": "64461e7040333e3d55a34a77"
+  },
+  "username": "user1",
+  "password": "$2a$10$EJ6bKW0DUjl/E1n3orPczeQvfnF6.N1bGAl6btww0s9mzH/cl9Iva",
+  "roles": [
+    {
+      "$ref": "roles",
+      "$id": {
+        "$oid": "64460ae0990e661d251bad77"
+      }
+    }
+  ],
+  "_class": "com.projet.hello.entity.AppUser"
+}]
